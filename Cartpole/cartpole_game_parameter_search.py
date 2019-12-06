@@ -1,7 +1,7 @@
 import gym
 import math
 import numpy as np
-import Agent
+import Expected_Sarsa as Agent
 
 num_episodes = 500
 buckets=(1, 1, 6, 12,)
@@ -15,7 +15,7 @@ agent_info = {"num_actions": 2,
               "random_seed": 0,
               "planning_random_seed": 0}
 
-agent = Agent.DynaQPlusAgent()
+agent = Agent.ExpectedSarsaAgent()
 
 def discretize(obs, env):
     upper_bounds = [env.observation_space.high[0], 0.5, env.observation_space.high[2], math.radians(50)]
@@ -26,10 +26,10 @@ def discretize(obs, env):
     return tuple(new_obs)
 
 if __name__ == "__main__":
-    planning_steps_para = [0, 5, 10, 50]
+    step_size = [0.01, 0.05, 0.1, 0.5]
 
-    for step in planning_steps_para:
-        agent_info["planning_steps"] = step
+    for step in step_size:
+        agent_info["step_size"] = step
         agent.agent_init(agent_info)
         env = gym.make("CartPole-v1")
         Rewards = []
@@ -48,10 +48,10 @@ if __name__ == "__main__":
                 last_state = discretize(obs, env)
                 last_action = agent.agent_step(reward, last_state)
             
-            print("Episode: {} with {} planning step(s) Total reward: {}".format(ep, agent.planning_steps, total_rewards))
+            print("Episode: {} with {} planning step(s) Total reward: {}".format(ep, agent.step_size, total_rewards))
             Rewards.append(total_rewards)
         
         env.close()
 
-        np.save("./planning_step_{}".format(agent.planning_step), Rewards)
+        np.save("./step_size_{}".format(agent.step_size), Rewards)
         

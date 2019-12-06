@@ -1,7 +1,7 @@
 import gym
 import math
 import numpy as np
-import Agent
+import Expected_Sarsa as Agent
 
 num_episodes = 500
 buckets=(1, 1, 6, 12,)
@@ -15,7 +15,8 @@ agent_info = {"num_actions": 2,
               "random_seed": 0,
               "planning_random_seed": 0}
 
-agent = Agent.DynaQPlusAgent()
+# agent = Agent.DynaQPlusAgent()
+agent = Agent.ExpectedSarsaAgent()
 
 def discretize(obs, env):
     upper_bounds = [env.observation_space.high[0], 0.5, env.observation_space.high[2], math.radians(50)]
