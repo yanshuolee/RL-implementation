@@ -1,15 +1,15 @@
 # Cartpole implementation
-[Dyna-Q+ algorithm](##Dyna-Q+-algorithm)  
-- [Parameter Setting](###Parameter-Setting)  
+[Dyna-Q+ algorithm](###dyna-q-algorithm)  
+- [Parameter Setting](###parameter-setting)  
+- [Results](###results)  
+
+[Expected Sarsa algorithm](##expected-sarsa)  
+- [Parameter Setting](###parameter-setting)  
 - [Results](###Results)  
 
-[Expected Sarsa algorithm](##Expected-Sarsa)  
-- [Parameter Setting](###Parameter-Setting)  
-- [Results](###Results)  
-
-[Method Comparison](##Method-Comparison)  
-[Note](##Note)  
-[References](##References)  
+[Method Comparison](##method-comparison)  
+[Note](##note)  
+[References](##references)  
 
 
 ## Dyna-Q+ algorithm
