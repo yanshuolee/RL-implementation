@@ -1,7 +1,18 @@
 # Cartpole implementation
-[a link](##Results-using-Dyna-Q+-algorithm)
+[Dyna-Q+ algorithm](##Dyna-Q+-algorithm)  
+- [Parameter Setting](###Parameter-Setting)  
+- [Results](###Results)  
 
-## Results using Dyna-Q+ algorithm
+[Expected Sarsa algorithm](##Expected-Sarsa)  
+- [Parameter Setting](###Parameter-Setting)  
+- [Results](###Results)  
+
+[Method Comparison](##Method-Comparison)  
+[Note](##Note)  
+[References](##References)  
+
+
+## Dyna-Q+ algorithm
 ### Parameter Setting
 The agent(Dyna-Q+) parameter is being set as follows:  
 * epsilon = 0.1  
@@ -24,7 +35,7 @@ X axis: episode
 Y axis: reward  
 The max score is 141.714 on averge 500 episode with planning step of 10.
 
-## Results using Expected Sarsa
+## Expected Sarsa algorithm
 ### Parameter Setting
 The agent(Expected Sarsa) parameter is being set as follows:  
 * epsilon = 0.1  
