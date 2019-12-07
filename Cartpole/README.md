@@ -4,7 +4,7 @@
 - [Parameter Setting](#parameter-setting)  
 - [Results](#results)  
 
-[Expected Sarsa algorithm](#expected-sarsa)  
+[Expected Sarsa algorithm](#expected-sarsa-algorithm)  
 - [Parameter Setting](#parameter-setting-1)  
 - [Results](#results-1)  
 
