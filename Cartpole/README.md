@@ -1,11 +1,12 @@
 # Cartpole implementation
+## Content
 [Dyna-Q+ algorithm](#dyna-q-algorithm)  
 - [Parameter Setting](#parameter-setting)  
-- [Results](###results)  
+- [Results](#results)  
 
 [Expected Sarsa algorithm](#expected-sarsa)  
-- [Parameter Setting](#parameter-setting)  
-- [Results](#Results)  
+- [Parameter Setting](#parameter-setting-1)  
+- [Results](#results-1)  
 
 [Method Comparison](#method-comparison)  
 [Note](#note)  
@@ -16,24 +17,24 @@
 ### Parameter Setting
 The agent(Dyna-Q+) parameter is being set as follows:  
 * epsilon = 0.1  
-* step size(lr) = [0.01, 0.05]  
+* step size(lr) = 0.01  
 * gamma(discount) = 1  
 * kappa = 0.001  
 * planning steps = [0, 5, 10, 50]
 * num of episode = 500
 
 ### Results
-#### Using step size of 0.01
+#### Without adaptive learning
 ![alt text](https://github.com/yanshuolee/RL-implementation/blob/master/Cartpole/DynaQ_plus_results/step_size_0.01/various_planning_steps.png)
 X axis: episode  
 Y axis: reward  
 The max score is 146.928 on average 500 episode with planning step of 50.
 
-#### Using step size of 0.05
-![alt text](https://github.com/yanshuolee/RL-implementation/blob/master/Cartpole/DynaQ_plus_results/step_size_0.05/various_planning_steps.png)
+#### With adaptive learning
+![alt text]()
 X axis: episode  
 Y axis: reward  
-The max score is 141.714 on averge 500 episode with planning step of 10.
+The max score is  on average 500 episode with planning step of .
 
 ## Expected Sarsa algorithm
 ### Parameter Setting
@@ -44,10 +45,17 @@ The agent(Expected Sarsa) parameter is being set as follows:
 * num of episode = 500
 
 ### Results
+#### Without adaptive learning
 ![alt text](https://github.com/yanshuolee/RL-implementation/blob/master/Cartpole/Expected_Sarsa_results/various_step_size.png)
 X axis: episode  
 Y axis: reward  
 The max score is 93.38 on average 500 episode with step size of 0.1.
+
+#### With adaptive learning
+![alt text]()
+X axis: episode  
+Y axis: reward  
+The max score is  on average 500 episode with planning step of .
 
 ## Method Comparison
 Cartpole game is defined as being solved as getting avg reward of 195 over 100 consecutive trials.
