@@ -29,7 +29,7 @@ def discretize(obs, env):
 
 if __name__ == "__main__":
     agent.agent_init(agent_info)
-    env = gym.make("CartPole-v1")
+    env = gym.make("CartPole-v1") 
     
     episode_R = []
     for ep in range(num_episodes):
