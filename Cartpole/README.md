@@ -31,10 +31,10 @@ Y axis: reward
 The max score is 146.928 on average 500 episode with planning step of 50.
 
 #### With adaptive learning
-![alt text]()
+![alt text](https://github.com/yanshuolee/RL-implementation/blob/master/Cartpole/DynaQ_plus_results/step_size_0.01/adaptive/various_planning_steps.png)
 X axis: episode  
 Y axis: reward  
-The max score is  on average 500 episode with planning step of .
+The max score is 359.232 on average 500 episode with planning step of 0.
 
 ## Expected Sarsa algorithm
 ### Parameter Setting
@@ -52,10 +52,10 @@ Y axis: reward
 The max score is 93.38 on average 500 episode with step size of 0.1.
 
 #### With adaptive learning
-![alt text]()
+![alt text](https://github.com/yanshuolee/RL-implementation/blob/master/Cartpole/Expected_Sarsa_results/adaptive/various_step_size.png)
 X axis: episode  
 Y axis: reward  
-The max score is  on average 500 episode with planning step of .
+The max score is 366.032 on average 500 episode with step size of 0.01.
 
 ## Method Comparison
 Cartpole game is defined as being solved as getting avg reward of 195 over 100 consecutive trials.
