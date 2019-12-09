@@ -68,5 +68,5 @@ The cartpole score using Q-learning method [1] converges to 200 rewards after so
 ## References
 [1] https://medium.com/@tuzzer/cart-pole-balancing-with-q-learning-b54c6068d947  
 [2] https://gist.github.com/n1try/af0b8476ae4106ec098fea1dfe57f578  
-[3] http://www.derongliu.org/adp/adp-cdrom/Barto1983.pdf
+[3] http://www.derongliu.org/adp/adp-cdrom/Barto1983.pdf  
 [4] https://github.com/sanjitjain2/q-learning-for-cartpole/blob/master/qlearning.py
