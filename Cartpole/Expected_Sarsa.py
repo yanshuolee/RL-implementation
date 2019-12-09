@@ -1,6 +1,8 @@
 import numpy as np
+import math
 
 class ExpectedSarsaAgent():
+    
     def agent_init(self, agent_init_info):
         """
         Args:
@@ -23,7 +25,16 @@ class ExpectedSarsaAgent():
         
         # self.q = np.zeros((self.num_states, self.num_actions))
         self.q = np.zeros(self.num_states + (self.num_actions,))
+        self.base_epsilon = self.epsilon
+        self.base_step_size = self.step_size
+        self.ada_divisor = 25
+    
+    def get_epsilon(self, t):
+        return max(self.base_epsilon, min(1.0, 1.0 - math.log10((t + 1) / self.ada_divisor)))
 
+    def get_alpha(self, t):
+        return max(self.base_step_size, min(1.0, 1.0 - math.log10((t + 1) / self.ada_divisor)))
+    
     def agent_start(self, state):
         """
         Args:

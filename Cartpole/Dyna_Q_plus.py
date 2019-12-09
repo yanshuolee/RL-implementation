@@ -1,10 +1,10 @@
 import numpy as np
+import math
 
 class DynaQPlusAgent():
     
     def agent_init(self, agent_info):
-        """Setup for the agent called when the experiment first starts.
-
+        """
         Args:
             agent_init_info (dict), the parameters used to initialize the agent. The dictionary contains:
             {
@@ -45,10 +45,18 @@ class DynaQPlusAgent():
         self.past_action = -1
         self.past_state = -1
         self.model = {}
+        self.base_epsilon = self.epsilon
+        self.base_step_size = self.step_size
+        self.ada_divisor = 25
 
+    def get_epsilon(self, t):
+        return max(self.base_epsilon, min(1.0, 1.0 - math.log10((t + 1) / self.ada_divisor)))
+
+    def get_alpha(self, t):
+        return max(self.base_step_size, min(1.0, 1.0 - math.log10((t + 1) / self.ada_divisor)))
+        
     def update_model(self, past_state, past_action, state, reward):
-        """updates the model 
-
+        """
         Args:
             past_state  (int): s
             past_action (int): a
@@ -72,8 +80,7 @@ class DynaQPlusAgent():
         return tuples_in_list[index]
 
     def planning_step(self):
-        """performs planning, i.e. indirect RL.
-
+        """
         Args:
             None
         Returns:
@@ -93,7 +100,7 @@ class DynaQPlusAgent():
                 self.step_size * (R - self.q_values[pt_state][pt_action])
     
     def argmax(self, q_values):
-        """argmax with random tie-breaking
+        """
         Args:
             q_values (Numpy array): the array of action values
         Returns:
@@ -113,8 +120,7 @@ class DynaQPlusAgent():
         return self.rand_generator.choice(ties)
 
     def choose_action_egreedy(self, state):
-        """returns an action using an epsilon-greedy policy w.r.t. the current action-value function.
-
+        """
         Args:
             state (List): coordinates of the agent (two elements)
         Returns:
@@ -123,29 +129,32 @@ class DynaQPlusAgent():
 
         if self.rand_generator.rand() < self.epsilon:
             action = self.rand_generator.choice(self.actions)
+            self.explore_count = self.explore_count + 1
         else:
             values = self.q_values[state]
             action = self.argmax(values)
+            self.exploit_count = self.exploit_count + 1
 
         return action
 
     def agent_start(self, state):
-        """The first method called when the experiment starts, called after
-        the environment starts.
+        """
         Args:
             state (Numpy array): the state from the
                 environment's env_start function.
         Returns:
             (int) The first action the agent takes.
         """
-
+        self.explore_count = 0
+        self.exploit_count = 0 
+        
         self.past_state = state
-        self.past_action = self.choose_action_egreedy(self.past_state) 
+        self.past_action = self.choose_action_egreedy(self.past_state)
         
         return self.past_action
 
     def agent_step(self, reward, state):
-        """A step taken by the agent.
+        """
         Args:
             reward (float): the reward received for taking the last action taken
             state (Numpy array): the state from the
@@ -168,7 +177,7 @@ class DynaQPlusAgent():
         return self.past_action
 
     def agent_end(self, reward):
-        """Called when the agent terminates.
+        """
         Args:
             reward (float): the reward the agent received for entering the
                 terminal state.
